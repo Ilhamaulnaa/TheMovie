@@ -1,8 +1,8 @@
-package com.ilham.event.movie.remote.models
+package com.ilham.event.movie.data.remote.models
 
 import com.google.gson.annotations.SerializedName
 
-data class MoviePopularResponse(
+data class MovieDto(
 
 	@field:SerializedName("page")
 	val page: Int? = null,
@@ -47,10 +47,10 @@ data class ResultsItem(
 	val releaseDate: String? = null,
 
 	@field:SerializedName("popularity")
-	val popularity: Any? = null,
+	val popularity: Double? = null,
 
 	@field:SerializedName("vote_average")
-	val voteAverage: Any? = null,
+	val voteAverage: Double? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
