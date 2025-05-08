@@ -23,7 +23,7 @@ object GenreConstants {
 
     )
 
-    fun getGenreConstants(id: Int): String {
+    fun getGenreNameById(id: Int): String {
         return genreMap[id] ?: "Unknown"
     }
 
