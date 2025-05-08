@@ -5,9 +5,6 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-
-
-
 }
 
 android {
@@ -48,7 +45,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
 //        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packaging {
@@ -59,6 +56,8 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":data:event"))
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
@@ -75,6 +74,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("androidx.compose.material3:material3:1.3.2")
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.8.2")
@@ -103,15 +104,17 @@ dependencies {
 
     // Dependency Injection
 //    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-//    kapt("androidx.hilt:hilt-compiler:1.0.0")
 //    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
 
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    //dagger
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    kapt("androidx.hilt:hilt-compiler:1.2.0")
 
 
 }
