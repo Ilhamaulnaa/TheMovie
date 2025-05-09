@@ -95,16 +95,6 @@ dependencies {
     // Image Loading
     implementation("io.coil-kt:coil-compose:2.5.0")
 
-//    // Network
-//    implementation("com.squareup.retrofit2:converter-kotlinx-serialization:2.9.0")
-//    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-//    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-//    implementation("com.squareup.okhttp3:logging-interceptor:4.9.2")
-//    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-
-    // Dependency Injection
-//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
@@ -112,7 +102,6 @@ dependencies {
     //dagger
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
-//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
