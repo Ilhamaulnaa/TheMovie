@@ -67,7 +67,7 @@ fun BodyContent(
                         MovieCoverImage(
                             movie = it,
                             onMovieClick = {
-                                onMovieClick
+                                onMovieClick(it)
                             }
                         )
                     }
@@ -98,7 +98,7 @@ fun BodyContent(
                         MovieCoverImage(
                             movie = it,
                             onMovieClick = {
-                                onMovieClick
+                                onMovieClick(it)
                             }
                         )
                     }
