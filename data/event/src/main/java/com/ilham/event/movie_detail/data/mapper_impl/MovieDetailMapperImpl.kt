@@ -40,7 +40,12 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
                     rating = it?.authorDetails?.rating ?: 0.0
                 )
             } ?: emptyList(),
-            runTime = convertMinutesToHours(apiDto.runtime ?: 0)
+            runTime = convertMinutesToHours(apiDto.runtime ?: 0),
+            trailerUrl = apiDto.videos?.results
+                ?.firstOrNull { it?.site == "YouTube" && it.type == "Trailer" }
+                ?.key
+                ?.let { "http://youtube.com/watch?v=$it" }
+                ?: ""
         )
 
     }
@@ -59,23 +64,6 @@ class MovieDetailMapperImpl : ApiMapper<MovieDetail, MovieDetailDto> {
             "Unknown date"
         }
     }
-
-//    private fun formatTimeStamp(pattern: String = "dd.MM.yy", time: String): String {
-//        val inputDateFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
-//
-//        val outputDateFormatter = SimpleDateFormat(
-//            pattern,
-//            Locale.getDefault()
-//        )
-//
-//        // Parse the input date string
-//        val date = inputDateFormatter.parse(time)
-//
-//        // Format the parsed date to the desired pattern
-//        val formattedDate = date?.let { outputDateFormatter.format(it) } ?: time
-//
-//        return formattedDate
-//    }
 
     private fun convertMinutesToHours(minutes: Int): String {
         val hours = minutes / 60

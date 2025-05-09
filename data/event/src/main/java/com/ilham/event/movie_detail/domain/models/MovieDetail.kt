@@ -18,7 +18,8 @@ data class MovieDetail(
     val language: List<String> = emptyList(),
     val productionCountry: List<String> = emptyList(),
     val reviews: List<Review> = emptyList(),
-    val runTime: String = ""
+    val runTime: String = "",
+    val trailerUrl: String = ""
 )
 
 data class Cast(
