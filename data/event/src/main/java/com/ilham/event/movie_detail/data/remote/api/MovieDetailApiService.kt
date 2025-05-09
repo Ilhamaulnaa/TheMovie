@@ -3,6 +3,7 @@ package com.ilham.event.movie_detail.data.remote.api
 import com.ilham.event.BuildConfig
 import com.ilham.event.movie.data.remote.models.MovieDto
 import com.ilham.event.movie_detail.data.remote.models.MovieDetailDto
+import com.ilham.event.movie_detail.data.remote.models.VideosResponseDto
 import com.ilham.event.util.Constans
 import com.ilham.event.util.Constans.MOVIE_ID
 import retrofit2.http.GET
@@ -24,4 +25,9 @@ interface MovieDetailApiService {
         @Query("api_key") apiKey: String = BuildConfig.apiKey,
         @Query("include_adult") includeAdult: Boolean = false
     ): MovieDto
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieVideos(
+        @Path("movie_id") movieId: Int
+    ): VideosResponseDto
 }

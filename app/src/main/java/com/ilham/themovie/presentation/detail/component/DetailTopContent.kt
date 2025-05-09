@@ -1,5 +1,7 @@
 package com.ilham.themovie.presentation.detail.component
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -49,10 +51,6 @@ fun DetailTopContent(
     modifier: Modifier = Modifier,
     movieDetail: MovieDetail
 ) {
-//    val imgRequest = ImageRequest.Builder(LocalContext.current)
-//        .data("${Constans.BASE_IMAGE_URL}${movieDetail.posterPath}")
-//        .crossfade(true)
-//        .build()
 
     val posterUrl = movieDetail.posterPath.takeIf {
         it.isNotBlank() && !it.startsWith("Unknown")
@@ -79,6 +77,8 @@ fun DetailTopContent(
         MovieDetailComponent(
             rating = movieDetail.voteAverage ?: 0.0,
             releaseDate = movieDetail.releaseDate ?: "Unknown date",
+            trailerUrl = movieDetail.trailerUrl,
+            movieDetail = movieDetail,
             modifier = Modifier
                 .align(Alignment.BottomStart)
         )
@@ -92,7 +92,11 @@ private fun MovieDetailComponent(
     modifier: Modifier = Modifier,
     rating: Double,
     releaseDate: String,
+    trailerUrl: String,
+    movieDetail: MovieDetail
 ) {
+    val context = LocalContext.current
+
     Column(modifier) {
         MovieCard(
             modifier = Modifier.padding(horizontal = defaultPadding)
@@ -145,7 +149,12 @@ private fun MovieDetailComponent(
                 }
             }
             Card(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    movieDetail.trailerUrl.takeIf { it.isNotEmpty() }?.let { url ->
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        context.startActivity(intent)
+                    }
+                },
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White,
                     contentColor = primaryLightHighContrast
