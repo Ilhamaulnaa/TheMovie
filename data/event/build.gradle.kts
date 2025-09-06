@@ -1,9 +1,14 @@
 plugins {
-    id("com.android.library")
+//    id("com.android.library")
+//    id("org.jetbrains.kotlin.android")
+//    id("com.google.dagger.hilt.android")
+//    id("kotlin-kapt")
+//    id("kotlinx-serialization")
+    id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.dagger.hilt.android")
-    id("kotlin-kapt")
-    id("kotlinx-serialization")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -12,9 +17,8 @@ android {
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+//        consumerProguardFiles(file("consumer-rules.pro"))
         buildConfigField("String", "apiKey", "\"${project.properties["TMDB_API_KEY"]}\"")
     }
 
@@ -43,11 +47,13 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
+hilt {
+    enableAggregatingTask = false
 }
 
 dependencies {
+
+    val hiltVersoin = "2.56.2"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
@@ -69,10 +75,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
     //dagger
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    kapt("androidx.hilt:hilt-compiler:1.2.0")
+//    implementation("com.google.dagger:hilt-android:2.48")
+//    kapt("com.google.dagger:hilt-compiler:2.48")
+//    kapt("androidx.hilt:hilt-compiler:1.2.0")
+    implementation("com.google.dagger:hilt-android:${hiltVersoin}")
+    ksp("com.google.dagger:hilt-compiler:${hiltVersoin}")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
